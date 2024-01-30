@@ -5,8 +5,31 @@
 */
 //
 // Scripts
-// 
+//
 
+
+var typed = new Typed('#typed', {
+    strings: [
+        'Devops Engineer',
+        'Cloud Architect',
+        'Cloud Engineer'
+    ],
+    typeSpeed: 50,
+    backSpeed: 50,
+    loop: true
+});
+
+
+var typed_2 = new Typed('#typed_2', {
+    strings: [
+        'Play FIFA, Cult of the Lamb, COD, Ghost of Tsushima...',
+        'Play the guitar, and write music 🎸',
+        'Enjoy savoury meals'
+    ],
+    typeSpeed: 50,
+    backSpeed: 60,
+    loop: true
+});
 
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -39,7 +62,7 @@ const counter = document.querySelector(".counter-number");
 async function updateCounter() {
 	let response = await fetch("https://kjnbxinxccc3nk7bs6r4qqx7ta0vjwid.lambda-url.ca-central-1.on.aws/");
     let data = await response.json();
-	counter.innerHTML = ` Visitors: ${data}`;
+	counter.innerHTML = ` 👀 Views: ${data}`;
 }
 
 updateCounter();

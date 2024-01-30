@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Oswald|Rambla|Staatliches&display=swap');
 /*!
 * Start Bootstrap - Resume v7.0.6 (https://startbootstrap.com/theme/resume)
 * Copyright 2013-2023 Start Bootstrap
@@ -78,6 +79,42 @@
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
 }
+
+#typed{
+  color: var(--color-blue);
+}
+
+.site-banner .banner-area{
+
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.site-banner .banner-area .author{
+  margin: 0;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.site-banner .banner-area .author .author-img{
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  margin: auto;
+  background-image: url(./assets/img/avatar-alt.png);
+  background-repeat: no-repeat;
+  background-size: 110%;
+  background-position: 40% 0;
+}
+
+.skill .bars p, .site-content .skill .bars span{
+  line-height: 10px;
+}
+
 
 *,
 *::before,
