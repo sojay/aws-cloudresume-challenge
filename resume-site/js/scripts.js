@@ -23,8 +23,8 @@ var typed = new Typed('#typed', {
 var typed_2 = new Typed('#typed_2', {
     strings: [
         'Play FIFA, Cult of the Lamb, Hades, Ghost of Tsushima...',
-        'Play the guitar, and write music 🎸',
-        'Explore HAM Radio',
+        'Play the guitar 🎸, and write music 🎼',
+        'Explore HAM Radio 📡',
         'Enjoy savoury meals'
     ],
     typeSpeed: 50,
