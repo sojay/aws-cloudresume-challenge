@@ -29,7 +29,7 @@ var typed_2 = new Typed('#typed_2', {
     ],
     typeSpeed: 50,
     backSpeed: 60,
-    loop: true
+    loop: true    
 });
 
 
