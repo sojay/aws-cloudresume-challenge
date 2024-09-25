@@ -25,7 +25,7 @@ var typed_2 = new Typed('#typed_2', {
         'Play FIFA, Cult of the Lamb, Hades, Ghost of Tsushima 🕹️',
         'Play the guitar 🎸, and write music 🎼',
         'Explore HAM Radio 📡',
-        'Enjoy savoury meals'
+        'Enjoy Cycling 🚴‍♀️',
     ],
     typeSpeed: 50,
     backSpeed: 60,
