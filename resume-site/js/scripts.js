@@ -10,13 +10,13 @@
 
 var typed = new Typed('#typed', {
     strings: [
-        'Devops Engineer',
-        'Cloud Architect',
-        'Cloud Engineer'
+        'Cloud Computing Enthusiast',
+        // 'DevOps Engineer',
+        // 'Cloud Engineer'
     ],
     typeSpeed: 50,
-    backSpeed: 50,
-    loop: true
+    backSpeed: 30,
+    loop: false
 });
 
 
@@ -28,8 +28,8 @@ var typed_2 = new Typed('#typed_2', {
         'Enjoy Cycling 🚴‍♀️',
     ],
     typeSpeed: 50,
-    backSpeed: 60,
-    loop: true    
+    backSpeed: 40,
+    loop: false    
 });
 
 
