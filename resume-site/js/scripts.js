@@ -10,8 +10,8 @@
 
 var typed = new Typed('#typed', {
     strings: [
-        'Cloud Computing Enthusiast',
-        // 'DevOps Engineer',
+        'Automating the Cloud',
+        // 'building ',
         // 'Cloud Engineer'
     ],
     typeSpeed: 50,
@@ -22,10 +22,10 @@ var typed = new Typed('#typed', {
 
 var typed_2 = new Typed('#typed_2', {
     strings: [
-        'Play FIFA, Cult of the Lamb, Hades, Ghost of Tsushima 🕹️',
+        // 'Play FIFA, Cult of the Lamb, Hades, Ghost of Tsushima 🕹️',
         'Play the guitar 🎸, and write music 🎼',
-        'Explore HAM Radio 📡',
-        'Enjoy Cycling 🚴‍♀️',
+        'explore HAM Radio 📡',
+        'Cycle 🚴‍♀️',
     ],
     typeSpeed: 50,
     backSpeed: 40,
