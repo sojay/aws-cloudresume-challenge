@@ -18,9 +18,10 @@
                 theme: {
                     extend: {
                         colors: {
-                            primary: '#0D6EFD',
+                            primary: '#3B82F6',
                             secondary: '#6C757D',
-                            dark: '#212529',
+                            dark: '#111827',
+                            darker: '#0F172A',
                             light: '#F8F9FA'
                         },
                         fontFamily: {
@@ -28,7 +29,7 @@
                         },
                         backgroundImage: {
                             'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                            'gradient-dots': 'url("data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.08\' fill-rule=\'evenodd\'%3E%3Ccircle cx=\'3\' cy=\'3\' r=\'3\'/%3E%3Ccircle cx=\'13\' cy=\'13\' r=\'3\'/%3E%3C/g%3E%3C/svg%3E")',
+                            'gradient-dots': 'url("data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%234b5eaa\' fill-opacity=\'0.2\' fill-rule=\'evenodd\'%3E%3Ccircle cx=\'3\' cy=\'3\' r=\'3\'/%3E%3Ccircle cx=\'13\' cy=\'13\' r=\'3\'/%3E%3C/g%3E%3C/svg%3E")',
                         }
                     }
                 }
@@ -44,13 +45,13 @@
                     @apply px-3 py-2 text-white hover:text-gray-300 font-medium transition-colors duration-200;
                 }
                 .content-card {
-                    @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6;
+                    @apply bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 border border-gray-700;
                 }
             }
             
             body {
-                background-color: #f8fafc;
-                background-image: linear-gradient(135deg, rgba(249, 250, 251, 0.9) 0%, rgba(240, 249, 255, 0.8) 100%), url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234b5eaa' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+                background-color: #0F172A;
+                background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%), url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234b5eaa' fill-opacity='0.15' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
                 background-attachment: fixed;
             }
         </style>
@@ -105,26 +106,26 @@
             <!-- About Section -->
             <section id="about" class="py-20 px-4 md:px-10 lg:px-16">
                 <div class="max-w-4xl mx-auto">
-                    <div class="text-center mb-12 content-card bg-gradient-to-b from-white to-blue-50 rounded-2xl p-8">
+                    <div class="text-center mb-12 content-card bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl p-8">
                         <img src="./assets/img/tech-author.png" alt="profile image" class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full mx-auto mb-6 shadow-lg ring-4 ring-blue-200">
-                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-2">Hi, I'm Samuel</h1>
-                        <h3 class="text-lg md:text-xl lg:text-2xl text-gray-600 mb-6">I love <span id="typed" class="text-blue-600 font-medium"></span></h3>
-                        <div class="text-gray-600 mb-8">
+                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">Hi, I'm Samuel</h1>
+                        <h3 class="text-lg md:text-xl lg:text-2xl text-gray-300 mb-6">I love <span id="typed" class="text-blue-400 font-medium"></span></h3>
+                        <div class="text-gray-400 mb-8">
                             <p class="mb-1">(647) 685-7447</p>
-                            <a href="mailto:thesamokorie@gmail.com" class="text-blue-600 hover:text-blue-800 transition-colors">thesamokorie@gmail.com</a>
+                            <a href="mailto:thesamokorie@gmail.com" class="text-blue-400 hover:text-blue-300 transition-colors">thesamokorie@gmail.com</a>
                         </div>
                     </div>
                     
                     <div class="mb-12 content-card">
-                        <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 pb-2 border-b-2 border-blue-100">About Me</h2>
+                        <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 pb-2 border-b-2 border-gray-700">About Me</h2>
                         
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                             <div class="md:col-span-5">
                                 <img src="./assets/img/banner.png" alt="profile image" class="w-full rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="md:col-span-7">
-                                <h4 class="text-xl font-semibold text-gray-700 mb-4">I like to <span id="typed_2" class="text-blue-600"></span></h4>
-                                <p class="text-gray-600 leading-relaxed mb-6">
+                                <h4 class="text-xl font-semibold text-gray-200 mb-4">I like to <span id="typed_2" class="text-blue-400"></span></h4>
+                                <p class="text-gray-300 leading-relaxed mb-6">
                                     I'm a professional with a passion for solving complex problems. I specialize in automating infrastructure, continuous integration, and system monitoring. Proficient in networking, Linux, Python, and cybersecurity, I design and implement secure, scalable IT solutions that optimize operations and drive efficiency. Passionate about solving complex challenges in cloud environments, I am eager to leverage my skills in collaborative projects that foster innovation and growth. Outside of work, I stay focused through kickboxing, Brazilian Jiu-Jitsu, and cycling, while exploring new technologies through amateur radio and homelab projects. This blend of professional focus and personal curiosity keeps me on the cutting edge of technology and innovation.
                                 </p>
                                 <a href="./assets/Samuel_Okorie.pdf" target="_blank" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium rounded-md shadow-md transition-all duration-200 transform hover:scale-105">
@@ -153,20 +154,20 @@
             <!-- Experience-->
             <section id="experience" class="py-16 px-4 md:px-10 lg:px-16">
                 <div class="max-w-4xl mx-auto">
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 border-b-2 border-blue-100 pb-2">Experience</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 border-b-2 border-gray-700 pb-2">Experience</h2>
                     
                     <!-- Job 1 -->
-                    <div class="mb-12 content-card bg-gradient-to-br from-white to-blue-50">
+                    <div class="mb-12 content-card bg-gradient-to-br from-gray-800 to-gray-900">
                         <div class="flex flex-col md:flex-row md:items-start">
                             <div class="flex-grow">
-                                <h3 class="text-xl md:text-2xl font-semibold text-gray-800">DevOps Engineer</h3>
-                                <div class="text-lg text-blue-600 font-medium mb-3">ActZero</div>
-                                <p class="text-gray-600 leading-relaxed mb-4">
+                                <h3 class="text-xl md:text-2xl font-semibold text-white">DevOps Engineer</h3>
+                                <div class="text-lg text-blue-400 font-medium mb-3">ActZero</div>
+                                <p class="text-gray-300 leading-relaxed mb-4">
                                     Automated Stellar XDR log conversion with a Python-based Log Generator, enhancing MDR in customer environments. Deployed web apps to Kubernetes clusters using ArgoCD and Hashicorp Vault for secret management, while optimizing resource allocation with Kubernetes auto-scaling to reduce infrastructure costs. Streamlined developer workflows by designing CI/CD pipelines for microservices, integrating tools like Maven, Bitbucket, SonarQube, and Docker. Additionally, led the migration of legacy applications to Microsoft Azure via Azure DevOps pipelines.
                                 </p>
                             </div>
                             <div class="md:ml-6 mb-4 md:mb-0 md:text-right">
-                                <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
+                                <span class="inline-block bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
                                     March 2022 - Present
                                 </span>
                             </div>
@@ -174,17 +175,17 @@
                     </div>
                     
                     <!-- Job 2 -->
-                    <div class="mb-12 content-card bg-gradient-to-br from-white to-blue-50">
+                    <div class="mb-12 content-card bg-gradient-to-br from-gray-800 to-gray-900">
                         <div class="flex flex-col md:flex-row md:items-start">
                             <div class="flex-grow">
-                                <h3 class="text-xl md:text-2xl font-semibold text-gray-800">Cloud Engineer/IT Support Analyst</h3>
-                                <div class="text-lg text-blue-600 font-medium mb-3">IntelliGO Networks</div>
-                                <p class="text-gray-600 leading-relaxed mb-4">
+                                <h3 class="text-xl md:text-2xl font-semibold text-white">Cloud Engineer/IT Support Analyst</h3>
+                                <div class="text-lg text-blue-400 font-medium mb-3">IntelliGO Networks</div>
+                                <p class="text-gray-300 leading-relaxed mb-4">
                                     Improved visibility and incident response times by implementing ELK Stack and Grafana for logging and monitoring. Optimized cloud orchestration with Terraform and Ansible across AWS and GCP environments, including EKS, VPC, EC2, and Route53. Integrated Jira with GitHub for project tracking, automated security monitoring with Nexus IQ, and maintained code quality via SonarQube and Jenkins. Automated Linux server deployments and reduced machine downtime by 15% using Prometheus and Grafana. Enhanced threat detection and vulnerability management with AI-powered CrowdStrike, Stellar Cyber XDR, and Tenable.sc.
                                 </p>
                             </div>
                             <div class="md:ml-6 mb-4 md:mb-0 md:text-right">
-                                <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
+                                <span class="inline-block bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
                                     January 2019 - February 2022
                                 </span>
                             </div>
@@ -192,17 +193,17 @@
                     </div>
                     
                     <!-- Job 3 -->
-                    <div class="mb-12 content-card bg-gradient-to-br from-white to-blue-50">
+                    <div class="mb-12 content-card bg-gradient-to-br from-gray-800 to-gray-900">
                         <div class="flex flex-col md:flex-row md:items-start">
                             <div class="flex-grow">
-                                <h3 class="text-xl md:text-2xl font-semibold text-gray-800">System Administrator</h3>
-                                <div class="text-lg text-blue-600 font-medium mb-3">Andela</div>
-                                <p class="text-gray-600 leading-relaxed mb-4">
+                                <h3 class="text-xl md:text-2xl font-semibold text-white">System Administrator</h3>
+                                <div class="text-lg text-blue-400 font-medium mb-3">Andela</div>
+                                <p class="text-gray-300 leading-relaxed mb-4">
                                     Hardening devices and systems through least-privilege account assignments, disabling unused services, enforcing encryption, and implementing robust password policies.
                                 </p>
                             </div>
                             <div class="md:ml-6 mb-4 md:mb-0 md:text-right">
-                                <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
+                                <span class="inline-block bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
                                     September 2014 - November 2018
                                 </span>
                             </div>
@@ -216,18 +217,18 @@
             <!-- Education-->
             <section id="education" class="py-16 px-4 md:px-10 lg:px-16">
                 <div class="max-w-4xl mx-auto">
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 border-b-2 border-blue-100 pb-2">Education</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 border-b-2 border-gray-700 pb-2">Education</h2>
                     
                     <!-- School 1 -->
-                    <div class="mb-12 content-card bg-gradient-to-br from-white to-indigo-50">
+                    <div class="mb-12 content-card bg-gradient-to-br from-gray-800 to-indigo-950">
                         <div class="flex flex-col md:flex-row md:items-start">
                             <div class="flex-grow">
-                                <h3 class="text-xl md:text-2xl font-semibold text-gray-800">Cambrian College of Applied Art & Science</h3>
-                                <div class="text-lg text-blue-600 font-medium mb-2">Diploma</div>
-                                <p class="text-gray-600">Business Analytics</p>
+                                <h3 class="text-xl md:text-2xl font-semibold text-white">Cambrian College of Applied Art & Science</h3>
+                                <div class="text-lg text-blue-400 font-medium mb-2">Diploma</div>
+                                <p class="text-gray-300">Business Analytics</p>
                             </div>
                             <div class="md:ml-6 mb-4 md:mb-0 md:text-right">
-                                <span class="inline-block bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
+                                <span class="inline-block bg-indigo-900/50 text-indigo-300 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
                                     June 2022
                                 </span>
                             </div>
@@ -235,15 +236,15 @@
                     </div>
                     
                     <!-- School 2 -->
-                    <div class="mb-12 content-card bg-gradient-to-br from-white to-indigo-50">
+                    <div class="mb-12 content-card bg-gradient-to-br from-gray-800 to-indigo-950">
                         <div class="flex flex-col md:flex-row md:items-start">
                             <div class="flex-grow">
-                                <h3 class="text-xl md:text-2xl font-semibold text-gray-800">University of Port-Harcourt</h3>
-                                <div class="text-lg text-blue-600 font-medium mb-2">Bachelor of Science</div>
-                                <p class="text-gray-600">Computer Science</p>
+                                <h3 class="text-xl md:text-2xl font-semibold text-white">University of Port-Harcourt</h3>
+                                <div class="text-lg text-blue-400 font-medium mb-2">Bachelor of Science</div>
+                                <p class="text-gray-300">Computer Science</p>
                             </div>
                             <div class="md:ml-6 mb-4 md:mb-0 md:text-right">
-                                <span class="inline-block bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
+                                <span class="inline-block bg-indigo-900/50 text-indigo-300 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
                                     May 2010
                                 </span>
                             </div>
@@ -257,88 +258,88 @@
             <!-- Skills section -->
             <section id="skills" class="py-16 px-4 md:px-10 lg:px-16">
                 <div class="max-w-4xl mx-auto">
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 border-b-2 border-blue-100 pb-2">Skills</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 border-b-2 border-gray-700 pb-2">Skills</h2>
                     
-                    <div class="mb-10 content-card bg-gradient-to-tr from-white to-blue-50">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-6 border-b border-blue-100 pb-3">Programming Languages & Tools</h3>
+                    <div class="mb-10 content-card bg-gradient-to-tr from-gray-800 to-gray-900">
+                        <h3 class="text-xl font-semibold text-white mb-6 border-b border-gray-700 pb-3">Programming Languages & Tools</h3>
                         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-100">
+                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-gray-900 shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-700">
                                 <img src="./assets/img/linux.svg" alt="Linux Icon" class="w-16 h-16 mb-2">
-                                <span class="text-sm text-gray-600 font-medium">Linux</span>
+                                <span class="text-sm text-gray-300 font-medium">Linux</span>
                             </div>
-                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-100">
+                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-gray-900 shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-700">
                                 <img src="./assets/img/python.svg" alt="Python Icon" class="w-16 h-16 mb-2">
-                                <span class="text-sm text-gray-600 font-medium">Python</span>
+                                <span class="text-sm text-gray-300 font-medium">Python</span>
                             </div>
-                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-100">
+                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-gray-900 shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-700">
                                 <img src="./assets/img/js.svg" alt="Javascript Icon" class="w-16 h-16 mb-2">
-                                <span class="text-sm text-gray-600 font-medium">JavaScript</span>
+                                <span class="text-sm text-gray-300 font-medium">JavaScript</span>
                             </div>
-                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-100">
+                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-gray-900 shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-700">
                                 <img src="./assets/img/aws.svg" alt="AWS Icon" class="w-16 h-16 mb-2">
-                                <span class="text-sm text-gray-600 font-medium">AWS</span>
+                                <span class="text-sm text-gray-300 font-medium">AWS</span>
                             </div>
-                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-100">
+                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-gray-900 shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-700">
                                 <img src="./assets/img/tf.svg" alt="Terraform Icon" class="w-16 h-16 mb-2">
-                                <span class="text-sm text-gray-600 font-medium">Terraform</span>
+                                <span class="text-sm text-gray-300 font-medium">Terraform</span>
                             </div>
-                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-100">
+                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-gray-900 shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-700">
                                 <img src="./assets/img/ansible.svg" alt="Ansible Icon" class="w-16 h-16 mb-2">
-                                <span class="text-sm text-gray-600 font-medium">Ansible</span>
+                                <span class="text-sm text-gray-300 font-medium">Ansible</span>
                             </div>
-                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-100">
+                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-gray-900 shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-700">
                                 <img src="./assets/img/gitlab.svg" alt="Gitlab Icon" class="w-16 h-16 mb-2">
-                                <span class="text-sm text-gray-600 font-medium">GitLab</span>
+                                <span class="text-sm text-gray-300 font-medium">GitLab</span>
                             </div>
-                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-100">
+                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-gray-900 shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-700">
                                 <img src="./assets/img/docker.svg" alt="Docker Icon" class="w-16 h-16 mb-2">
-                                <span class="text-sm text-gray-600 font-medium">Docker</span>
+                                <span class="text-sm text-gray-300 font-medium">Docker</span>
                             </div>
-                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-100">
+                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-gray-900 shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-700">
                                 <img src="./assets/img/kubernetes.svg" alt="kubernetes Icon" class="w-16 h-16 mb-2">
-                                <span class="text-sm text-gray-600 font-medium">Kubernetes</span>
+                                <span class="text-sm text-gray-300 font-medium">Kubernetes</span>
                             </div>
-                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-100">
+                            <div class="flex flex-col items-center justify-center p-4 rounded-lg bg-gray-900 shadow-sm hover:shadow-md transition-shadow transform hover:scale-105 duration-300 border border-gray-700">
                                 <img src="./assets/img/jenkins.svg" alt="Jenkins Icon" class="w-16 h-16 mb-2">
-                                <span class="text-sm text-gray-600 font-medium">Jenkins</span>
+                                <span class="text-sm text-gray-300 font-medium">Jenkins</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="mb-10 content-card bg-gradient-to-bl from-white to-blue-50">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-6 border-b border-blue-100 pb-3">Certifications</h3>
+                    <div class="mb-10 content-card bg-gradient-to-bl from-gray-800 to-gray-900">
+                        <h3 class="text-xl font-semibold text-white mb-6 border-b border-gray-700 pb-3">Certifications</h3>
                         <ul class="space-y-4">
-                            <li class="flex items-center p-2 hover:bg-blue-50 rounded-md transition-colors">
+                            <li class="flex items-center p-2 hover:bg-gray-700 rounded-md transition-colors">
                                 <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex items-center justify-center mr-3 shadow-sm">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 font-medium">Linux Foundation: Kubernetes Certified Administrator</span>
+                                <span class="text-gray-200 font-medium">Linux Foundation: Kubernetes Certified Administrator</span>
                             </li>
-                            <li class="flex items-center p-2 hover:bg-blue-50 rounded-md transition-colors">
+                            <li class="flex items-center p-2 hover:bg-gray-700 rounded-md transition-colors">
                                 <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex items-center justify-center mr-3 shadow-sm">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 font-medium">Amazon Web Services: Solutions Architect</span>
+                                <span class="text-gray-200 font-medium">Amazon Web Services: Solutions Architect</span>
                             </li>
-                            <li class="flex items-center p-2 hover:bg-blue-50 rounded-md transition-colors">
+                            <li class="flex items-center p-2 hover:bg-gray-700 rounded-md transition-colors">
                                 <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex items-center justify-center mr-3 shadow-sm">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 font-medium">Red Hat: Certified System Administrator</span>
+                                <span class="text-gray-200 font-medium">Red Hat: Certified System Administrator</span>
                             </li>
-                            <li class="flex items-center p-2 hover:bg-blue-50 rounded-md transition-colors">
+                            <li class="flex items-center p-2 hover:bg-gray-700 rounded-md transition-colors">
                                 <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex items-center justify-center mr-3 shadow-sm">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <span class="text-gray-700 font-medium">SAFe Agile: Scrum Master</span>
+                                <span class="text-gray-200 font-medium">SAFe Agile: Scrum Master</span>
                             </li>
                         </ul>
                     </div>
@@ -350,53 +351,53 @@
             <!-- Projects -->
             <section id="interests" class="py-16 px-4 md:px-10 lg:px-16">
                 <div class="max-w-4xl mx-auto">
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 border-b-2 border-blue-100 pb-2">Projects</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 border-b-2 border-gray-700 pb-2">Projects</h2>
                     
                     <!-- Project 1 -->
                     <div class="mb-12">
-                        <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3">Azure Nuke</h3>
-                        <div class="content-card bg-gradient-to-r from-white via-blue-50 to-indigo-50 border border-blue-100">
+                        <h3 class="text-xl md:text-2xl font-semibold text-white mb-3">Azure Nuke</h3>
+                        <div class="content-card bg-gradient-to-r from-gray-800 via-gray-900 to-indigo-950 border border-gray-700">
                             <!-- GitHub Repository Preview Card -->
-                            <div class="mb-6 border border-gray-200 rounded-md overflow-hidden bg-white shadow-sm">
-                                <div class="flex items-center p-4 border-b border-gray-200 bg-gray-50">
-                                    <svg class="w-5 h-5 text-gray-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <div class="mb-6 border border-gray-700 rounded-md overflow-hidden bg-gray-900 shadow-sm">
+                                <div class="flex items-center p-4 border-b border-gray-700 bg-gray-800">
+                                    <svg class="w-5 h-5 text-gray-300 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                                     </svg>
-                                    <span class="font-medium">sojay/azure-nuke</span>
+                                    <span class="font-medium text-white">sojay/azure-nuke</span>
                                     <div class="ml-auto flex items-center space-x-3">
                                         <div class="flex items-center">
-                                            <svg class="w-4 h-4 text-gray-600 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg class="w-4 h-4 text-gray-300 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                                             </svg>
-                                            <span class="text-sm text-gray-600">8</span>
+                                            <span class="text-sm text-gray-300">8</span>
                                         </div>
                                         <div class="flex items-center">
-                                            <svg class="w-4 h-4 text-gray-600 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg class="w-4 h-4 text-gray-300 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.34 3 12.25c0 2.22 1.8 4.05 4 4.05z"></path>
                                                 <path d="M12.56 17.94c4.19-2.58 6.44-7.94 6.44-13.13 0-1.22-.78-2.22-1.73-2.68s-2.14-.46-3.12-.17c.96-.29 1.96-.18 2.85.29 1.08.57 1.73 1.71 1.73 3.07 0 4.59-2.25 9.24-6.44 11.81"></path>
                                             </svg>
-                                            <span class="text-sm text-gray-600">1</span>
+                                            <span class="text-sm text-gray-300">1</span>
                                         </div>
                                         <div class="flex items-center">
-                                            <svg class="w-4 h-4 text-gray-600 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg class="w-4 h-4 text-gray-300 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <circle cx="18" cy="18" r="3"></circle>
                                                 <circle cx="6" cy="6" r="3"></circle>
                                                 <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
                                                 <line x1="6" y1="9" x2="6" y2="21"></line>
                                             </svg>
-                                            <span class="text-sm text-gray-600">1</span>
+                                            <span class="text-sm text-gray-300">1</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="p-4">
-                                    <p class="text-gray-700 mb-3">A powerful CLI tool for scanning and cleaning up Azure resources.</p>
+                                    <p class="text-gray-300 mb-3">A powerful CLI tool for scanning and cleaning up Azure resources.</p>
                                     <div class="mb-3 flex flex-wrap gap-2">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Python</span>
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Dockerfile</span>
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Shell</span>
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">MIT License</span>
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-900 text-blue-200">Python</span>
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-gray-200">Dockerfile</span>
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-gray-200">Shell</span>
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-900 text-purple-200">MIT License</span>
                                     </div>
-                                    <a href="https://github.com/sojay/azure-nuke" target="_blank" class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800">
+                                    <a href="https://github.com/sojay/azure-nuke" target="_blank" class="inline-flex items-center text-sm font-medium text-blue-400 hover:text-blue-300">
                                         View on GitHub
                                         <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
@@ -406,15 +407,15 @@
                             </div>
                             
                             <div class="mb-4">
-                                <h4 class="text-lg font-medium text-blue-600 mb-2">Project Overview</h4>
-                                <p class="text-gray-600 leading-relaxed">
+                                <h4 class="text-lg font-medium text-blue-400 mb-2">Project Overview</h4>
+                                <p class="text-gray-300 leading-relaxed">
                                     Azure Nuke is a CLI tool I developed to manage and clean up Azure cloud resources efficiently. The tool helps organizations scan for unused resources, enforce tagging policies, and safely delete resources that are no longer needed, reducing cloud costs and improving security posture.
                                 </p>
                             </div>
                             
                             <div class="mb-6">
-                                <h4 class="text-lg font-medium text-blue-600 mb-2">Features</h4>
-                                <ul class="list-disc list-inside space-y-2 text-gray-600 ml-2">
+                                <h4 class="text-lg font-medium text-blue-400 mb-2">Features</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-300 ml-2">
                                     <li>Comprehensive scanning of Azure resources across subscriptions</li>
                                     <li>Safe deletion with confirmation prompts and dry-run mode</li>
                                     <li>Flexible filtering by resource type, region, and more</li>
@@ -424,19 +425,19 @@
                             </div>
                             
                             <div class="mb-4">
-                                <h4 class="text-lg font-medium text-blue-600 mb-2">Technologies Used</h4>
+                                <h4 class="text-lg font-medium text-blue-400 mb-2">Technologies Used</h4>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 rounded-full text-sm shadow-sm">Python</span>
-                                    <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 rounded-full text-sm shadow-sm">Azure SDK</span>
-                                    <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 rounded-full text-sm shadow-sm">Azure CLI</span>
-                                    <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 rounded-full text-sm shadow-sm">Docker</span>
-                                    <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 rounded-full text-sm shadow-sm">GitHub Actions</span>
+                                    <span class="px-3 py-1 bg-gradient-to-r from-blue-900 to-blue-800 text-blue-200 rounded-full text-sm shadow-sm">Python</span>
+                                    <span class="px-3 py-1 bg-gradient-to-r from-blue-900 to-blue-800 text-blue-200 rounded-full text-sm shadow-sm">Azure SDK</span>
+                                    <span class="px-3 py-1 bg-gradient-to-r from-blue-900 to-blue-800 text-blue-200 rounded-full text-sm shadow-sm">Azure CLI</span>
+                                    <span class="px-3 py-1 bg-gradient-to-r from-blue-900 to-blue-800 text-blue-200 rounded-full text-sm shadow-sm">Docker</span>
+                                    <span class="px-3 py-1 bg-gradient-to-r from-blue-900 to-blue-800 text-blue-200 rounded-full text-sm shadow-sm">GitHub Actions</span>
                                 </div>
                             </div>
                             
                             <div>
-                                <h4 class="text-lg font-medium text-blue-600 mb-2">Implementation Details</h4>
-                                <p class="text-gray-600 mb-4">
+                                <h4 class="text-lg font-medium text-blue-400 mb-2">Implementation Details</h4>
+                                <p class="text-gray-300 mb-4">
                                     Implemented the tool using Python with the Azure SDK for comprehensive resource management. Created a configuration system that supports YAML-based exclusion rules to protect critical infrastructure. Designed the CLI interface to be intuitive with command groups for scanning and deletion operations.
                                 </p>
                                 <div class="bg-gray-800 rounded-md p-4 text-gray-300 text-sm font-mono overflow-x-auto">
@@ -450,28 +451,28 @@ aznuke delete --checks storage,virtualmachines --dry-run</code></pre>
                     
                     <!-- Project 2 -->
                     <div class="mb-12">
-                        <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3">Homelab Environment</h3>
-                        <div class="content-card bg-gradient-to-r from-white via-indigo-50 to-blue-50 border border-indigo-100">
+                        <h3 class="text-xl md:text-2xl font-semibold text-white mb-3">Homelab Environment</h3>
+                        <div class="content-card bg-gradient-to-r from-gray-800 via-indigo-950 to-gray-900 border border-gray-700">
                             <div class="mb-4">
-                                <h4 class="text-lg font-medium text-indigo-600 mb-2">Project Overview</h4>
-                                <p class="text-gray-600 leading-relaxed">
+                                <h4 class="text-lg font-medium text-indigo-400 mb-2">Project Overview</h4>
+                                <p class="text-gray-300 leading-relaxed">
                                     A personal infrastructure project designed to deepen hands-on experience in virtualization, containerization, IAM, and self-hosting open-source applications.
                                 </p>
                             </div>
                             <div class="mb-4">
-                                <h4 class="text-lg font-medium text-indigo-600 mb-2">Technologies Used</h4>
+                                <h4 class="text-lg font-medium text-indigo-400 mb-2">Technologies Used</h4>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 rounded-full text-sm shadow-sm">Proxmox VE</span>
-                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 rounded-full text-sm shadow-sm">Kubernetes</span>
-                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 rounded-full text-sm shadow-sm">Docker</span>
-                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 rounded-full text-sm shadow-sm">Nginx</span>
-                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 rounded-full text-sm shadow-sm">DHCP/DNS</span>
-                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 rounded-full text-sm shadow-sm">NAS</span>
+                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-900 to-indigo-800 text-indigo-200 rounded-full text-sm shadow-sm">Proxmox VE</span>
+                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-900 to-indigo-800 text-indigo-200 rounded-full text-sm shadow-sm">Kubernetes</span>
+                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-900 to-indigo-800 text-indigo-200 rounded-full text-sm shadow-sm">Docker</span>
+                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-900 to-indigo-800 text-indigo-200 rounded-full text-sm shadow-sm">Nginx</span>
+                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-900 to-indigo-800 text-indigo-200 rounded-full text-sm shadow-sm">DHCP/DNS</span>
+                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-900 to-indigo-800 text-indigo-200 rounded-full text-sm shadow-sm">NAS</span>
                                 </div>
                             </div>
                             <div>
-                                <h4 class="text-lg font-medium text-indigo-600 mb-2">Key Features</h4>
-                                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                <h4 class="text-lg font-medium text-indigo-400 mb-2">Key Features</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-300">
                                     <li>2-Node PVE Cluster with high availability</li>
                                     <li>Self-hosted applications with reverse proxy for seamless access</li>
                                     <li>Network traffic analysis and monitoring</li>
@@ -489,7 +490,7 @@ aznuke delete --checks storage,virtualmachines --dry-run</code></pre>
                     <p class="mb-2 text-white/90">
                         <div class="counter-number inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white font-medium shadow-inner"></div>
                     </p>
-                    <p class="text-white/80 text-sm">© 2025 Samuel Okorie. All rights reserved.</p>
+                    <p class="text-white/80 text-sm">© 2023 Samuel Okorie. All rights reserved.</p>
                 </div>
             </footer>
         </div>
