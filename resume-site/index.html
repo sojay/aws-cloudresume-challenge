@@ -11,8 +11,9 @@
     <!-- Font Awesome icons -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"
-        type="text/css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet" type="text/css" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -24,10 +25,14 @@
                         secondary: '#6C757D',
                         dark: '#111827',
                         darker: '#0F172A',
-                        light: '#F8F9FA'
+                        light: '#F8F9FA',
+                        terminal: '#00D492',
+                        'terminal-dim': '#065F46',
+                        'terminal-glow': 'rgba(0, 212, 146, 0.15)',
                     },
                     fontFamily: {
                         'sans': ['Manrope', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
                     },
                     backgroundImage: {
                         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -40,33 +45,84 @@
     <!-- Custom styles -->
     <style type="text/tailwindcss">
         @layer components {
-                .social-icon {
-                    @apply inline-flex justify-center items-center w-10 h-10 bg-primary text-white rounded-full transition-all duration-300 hover:bg-indigo-700 transform hover:scale-110;
-                }
-                .nav-link {
-                    @apply px-3 py-2 text-white hover:text-gray-300 font-medium transition-colors duration-200;
-                }
-                .content-card {
-                    @apply bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 border border-gray-700;
-                }
+            .social-icon {
+                @apply inline-flex justify-center items-center w-10 h-10 bg-primary text-white rounded-sm transition-all duration-300 hover:bg-terminal hover:text-black transform hover:scale-110;
             }
-            
-            body {
-                background-color: #0F172A;
-                background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%), url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234b5eaa' fill-opacity='0.15' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
-                background-attachment: fixed;
+            .nav-link {
+                @apply px-3 py-2 text-gray-300 hover:text-terminal font-mono text-sm font-medium transition-colors duration-200;
             }
-        </style>
+            .content-card {
+                @apply bg-gray-900 rounded-sm shadow-md transition-all duration-300 p-6 border border-gray-700/60;
+            }
+            .content-card:hover {
+                border-color: rgba(0, 212, 146, 0.25);
+                box-shadow: 0 0 0 1px rgba(0, 212, 146, 0.1), 0 4px 24px rgba(0, 0, 0, 0.4);
+            }
+            .section-prompt {
+                @apply font-mono text-terminal text-sm mr-2 opacity-80;
+            }
+        }
+
+        body {
+            background-color: #080A0F;
+            background-image:
+                linear-gradient(rgba(0, 212, 146, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 146, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-attachment: fixed;
+        }
+
+        /* Terminal scanline overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.03) 2px,
+                rgba(0, 0, 0, 0.03) 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Blinking cursor for typed.js */
+        .typed-cursor {
+            color: #00D492 !important;
+        }
+
+        /* Terminal-style code blocks */
+        pre code {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Green glow on focused/active nav items */
+        .nav-link:hover {
+            text-shadow: 0 0 8px rgba(0, 212, 146, 0.5);
+        }
+
+        /* Section heading prompt effect */
+        h2.tui-heading::before {
+            content: '> ';
+            color: #00D492;
+            font-family: 'JetBrains Mono', monospace;
+            opacity: 0.9;
+        }
+    </style>
 </head>
 
 <body class="font-sans">
     <!-- Navigation-->
     <nav
-        class="fixed top-0 left-0 w-full lg:w-64 h-auto lg:h-screen bg-gradient-to-r from-blue-600 to-indigo-700 z-50 transition-all duration-300 shadow-lg">
+        class="fixed top-0 left-0 w-full lg:w-64 h-auto lg:h-screen bg-black border-r border-gray-800 z-50 transition-all duration-300 shadow-lg">
         <div class="lg:h-screen flex flex-col">
             <!-- Mobile nav header -->
             <div class="flex items-center justify-between p-4 lg:p-6 lg:flex-col lg:items-center">
-                <a class="text-white font-bold text-xl lg:text-2xl lg:mb-8" href="#page-top">Samuel Okorie</a>
+                <a class="text-terminal font-mono font-bold text-xl lg:text-2xl lg:mb-8" href="#page-top">
+                    <span class="opacity-70">$</span> sam_okorie
+                </a>
                 <button class="lg:hidden text-white focus:outline-none" type="button"
                     onclick="document.getElementById('navMenu').classList.toggle('hidden')">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,35 +134,41 @@
 
             <!-- Profile image -->
             <div class="hidden lg:flex justify-center my-6">
-                <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                <div
+                    class="w-40 h-40 rounded-sm overflow-hidden border-2 border-gray-800 shadow-xl grayscale hover:grayscale-0 transition-all duration-500">
                     <img class="w-full h-full object-cover" src="./assets/img/profile.jpg" alt="Profile picture" />
                 </div>
             </div>
 
             <!-- Navigation links -->
             <div id="navMenu" class="hidden lg:block px-4 py-2 lg:py-8">
-                <ul class="space-y-2">
-                    <li><a class="nav-link block rounded hover:bg-blue-700 px-4 py-2" href="#about">About</a></li>
-                    <li><a class="nav-link block rounded hover:bg-blue-700 px-4 py-2" href="#experience">Experience</a>
+                <ul class="space-y-4">
+                    <li><a class="nav-link flex items-center group" href="#about"><span
+                                class="text-terminal mr-2 opacity-0 group-hover:opacity-100 transition-opacity">></span>About</a>
                     </li>
-                    <li><a class="nav-link block rounded hover:bg-blue-700 px-4 py-2" href="#education">Education</a>
+                    <li><a class="nav-link flex items-center group" href="#experience"><span
+                                class="text-terminal mr-2 opacity-0 group-hover:opacity-100 transition-opacity">></span>Experience</a>
                     </li>
-                    <li><a class="nav-link block rounded hover:bg-blue-700 px-4 py-2" href="#skills">Skills</a></li>
-                    <li><a class="nav-link block rounded hover:bg-blue-700 px-4 py-2" href="#interests">Projects</a>
+                    <li><a class="nav-link flex items-center group" href="#education"><span
+                                class="text-terminal mr-2 opacity-0 group-hover:opacity-100 transition-opacity">></span>Education</a>
                     </li>
-                    <li
-                        class="counter-number mt-4 flex items-center justify-center px-2 py-1 text-white text-sm bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg shadow-sm">
-                        <a class="nav-link js-scroll-trigger">Couldn't read views</a>
+                    <li><a class="nav-link flex items-center group" href="#skills"><span
+                                class="text-terminal mr-2 opacity-0 group-hover:opacity-100 transition-opacity">></span>Skills</a>
+                    </li>
+                    <li><a class="nav-link flex items-center group" href="#interests"><span
+                                class="text-terminal mr-2 opacity-0 group-hover:opacity-100 transition-opacity">></span>Projects</a>
                     </li>
                 </ul>
             </div>
 
             <!-- Social links -->
-            <div class="hidden lg:flex mt-auto p-6 justify-center space-x-4">
-                <a href="https://linkedin.com/in/sokorie/" class="social-icon" aria-label="LinkedIn">
+            <div class="hidden lg:flex mt-auto p-6 justify-center space-x-4 border-t border-gray-800 bg-gray-900/10">
+                <a href="https://linkedin.com/in/sokorie/" class="social-icon border border-gray-700 bg-transparent"
+                    aria-label="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://github.com/sojay" class="social-icon" aria-label="GitHub">
+                <a href="https://github.com/sojay" class="social-icon border border-gray-700 bg-transparent"
+                    aria-label="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
@@ -140,7 +202,9 @@
                 </div>
 
                 <div class="mb-12 content-card">
-                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 pb-2 border-b-2 border-gray-700">About Me
+                    <h2
+                        class="text-2xl md:text-3xl font-mono font-bold text-white mb-8 border-b-2 border-gray-800 pb-2 tui-heading uppercase tracking-widest">
+                        About Me
                     </h2>
 
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
@@ -190,7 +254,9 @@
         <!-- Experience-->
         <section id="experience" class="py-16 px-4 md:px-10 lg:px-16">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 border-b-2 border-gray-700 pb-2">Experience
+                <h2
+                    class="text-2xl md:text-3xl font-mono font-bold text-white mb-8 border-b-2 border-gray-800 pb-2 tui-heading uppercase tracking-widest">
+                    Experience
                 </h2>
 
                 <!-- Job 1 -->
@@ -215,8 +281,8 @@
                         </div>
                         <div class="md:ml-6 mb-4 md:mb-0 md:text-right">
                             <span
-                                class="inline-block bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
-                                March 2022 - Present
+                                class="inline-block font-mono text-terminal text-sm border border-terminal/30 bg-terminal/5 px-2 py-1">
+                                [ March 2022 - Present ]
                             </span>
                         </div>
                     </div>
@@ -241,8 +307,8 @@
                         </div>
                         <div class="md:ml-6 mb-4 md:mb-0 md:text-right">
                             <span
-                                class="inline-block bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
-                                January 2019 - February 2022
+                                class="inline-block font-mono text-terminal text-sm border border-terminal/30 bg-terminal/5 px-2 py-1">
+                                [ January 2019 - February 2022 ]
                             </span>
                         </div>
                     </div>
@@ -261,8 +327,8 @@
                         </div>
                         <div class="md:ml-6 mb-4 md:mb-0 md:text-right">
                             <span
-                                class="inline-block bg-blue-900/50 text-blue-300 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
-                                September 2014 - November 2018
+                                class="inline-block font-mono text-terminal text-sm border border-terminal/30 bg-terminal/5 px-2 py-1">
+                                [ September 2014 - November 2018 ]
                             </span>
                         </div>
                     </div>
@@ -275,7 +341,9 @@
         <!-- Education-->
         <section id="education" class="py-16 px-4 md:px-10 lg:px-16">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 border-b-2 border-gray-700 pb-2">Education
+                <h2
+                    class="text-2xl md:text-3xl font-mono font-bold text-white mb-8 border-b-2 border-gray-800 pb-2 tui-heading uppercase tracking-widest">
+                    Education
                 </h2>
 
                 <!-- School 1 -->
@@ -289,8 +357,8 @@
                         </div>
                         <div class="md:ml-6 mb-4 md:mb-0 md:text-right">
                             <span
-                                class="inline-block bg-indigo-900/50 text-indigo-300 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
-                                June 2022
+                                class="inline-block font-mono text-terminal text-sm border border-terminal/30 bg-terminal/5 px-2 py-1">
+                                [ June 2022 ]
                             </span>
                         </div>
                     </div>
@@ -306,8 +374,8 @@
                         </div>
                         <div class="md:ml-6 mb-4 md:mb-0 md:text-right">
                             <span
-                                class="inline-block bg-indigo-900/50 text-indigo-300 text-sm font-medium px-3 py-1 rounded-full shadow-sm">
-                                May 2010
+                                class="inline-block font-mono text-terminal text-sm border border-terminal/30 bg-terminal/5 px-2 py-1">
+                                [ May 2010 ]
                             </span>
                         </div>
                     </div>
@@ -320,7 +388,9 @@
         <!-- Skills section -->
         <section id="skills" class="py-16 px-4 md:px-10 lg:px-16">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 border-b-2 border-gray-700 pb-2">Skills</h2>
+                <h2
+                    class="text-2xl md:text-3xl font-mono font-bold text-white mb-8 border-b-2 border-gray-800 pb-2 tui-heading uppercase tracking-widest">
+                    Skills</h2>
 
                 <div class="mb-10 content-card bg-gradient-to-tr from-gray-800 to-gray-900">
                     <h3 class="text-xl font-semibold text-white mb-6 border-b border-gray-700 pb-3">Programming
@@ -437,7 +507,9 @@
         <!-- Projects -->
         <section id="interests" class="py-16 px-4 md:px-10 lg:px-16">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 border-b-2 border-gray-700 pb-2">Projects</h2>
+                <h2
+                    class="text-2xl md:text-3xl font-mono font-bold text-white mb-8 border-b-2 border-gray-800 pb-2 tui-heading uppercase tracking-widest">
+                    Projects</h2>
 
                 <!-- Project 1: Resona -->
                 <div class="mb-12">
