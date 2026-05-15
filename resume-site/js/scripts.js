@@ -1,86 +1,72 @@
-/*!
-* Start Bootstrap - Resume v7.0.6 (https://startbootstrap.com/theme/resume)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-resume/blob/master/LICENSE)
-*/
-//
-// Scripts
-//
+document.addEventListener('DOMContentLoaded', () => {
+  const body = document.body;
+  const header = document.querySelector('[data-site-header]');
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const panel = document.querySelector('[data-nav-panel]');
+  const navLinks = panel ? Array.from(panel.querySelectorAll('a')) : [];
 
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Typed.js
-    if (typeof Typed !== 'undefined') {
-        new Typed('#typed', {
-            strings: [
-                'Cloud Computing',
-                'DevOps',
-                'Automation',
-                'Problem Solving'
-            ],
-            typeSpeed: 70,
-            backSpeed: 50,
-            backDelay: 1500,
-            startDelay: 500,
-            loop: true
-        });
-        
-        new Typed('#typed_2', {
-            strings: [
-                'automate everything',
-                'solve complex problems',
-                'build resilient systems',
-                'learn continuously'
-            ],
-            typeSpeed: 70,
-            backSpeed: 50,
-            backDelay: 1500,
-            startDelay: 500,
-            loop: true
-        });
+  const closeMenu = () => {
+    if (!toggle || !panel) return;
+    toggle.setAttribute('aria-expanded', 'false');
+    panel.classList.remove('is-open');
+    body.classList.remove('nav-open');
+  };
+
+  const openMenu = () => {
+    if (!toggle || !panel) return;
+    toggle.setAttribute('aria-expanded', 'true');
+    panel.classList.add('is-open');
+    body.classList.add('nav-open');
+  };
+
+  if (toggle && panel) {
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!body.classList.contains('nav-open')) return;
+      if (header && header.contains(event.target)) return;
+      closeMenu();
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (event) => {
+      const targetId = anchor.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+      const targetElement = document.querySelector(targetId);
+      if (!targetElement) return;
+      event.preventDefault();
+      targetElement.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      if (targetElement instanceof HTMLElement) {
+        targetElement.setAttribute('tabindex', '-1');
+        targetElement.focus({ preventScroll: true });
+      }
+    });
+  });
+
+  const counter = document.querySelector('[data-counter]');
+  const updateCounter = async () => {
+    if (!counter) return;
+    try {
+      const response = await fetch('https://kjnbxinxccc3nk7bs6r4qqx7ta0vjwid.lambda-url.ca-central-1.on.aws/', { cache: 'no-store' });
+      if (!response.ok) throw new Error(`Counter request failed: ${response.status}`);
+      const data = await response.json();
+      counter.textContent = `${data} visits recorded`;
+    } catch (error) {
+      counter.textContent = 'Visitor count unavailable';
     }
-    
-    // View counter
-    const viewCounter = async function() {
-        try {
-            console.log("Starting to fetch view count...");
-            const counter = document.querySelector(".counter-number");
-            console.log("Counter element found:", counter);
-            
-            const response = await fetch("https://kjnbxinxccc3nk7bs6r4qqx7ta0vjwid.lambda-url.ca-central-1.on.aws/");
-            console.log("Response received:", response);
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            console.log("View count data:", data);
-            
-            if (counter) {
-                // Add a subtle flash animation effect
-                counter.style.transition = "all 0.3s ease";
-                counter.style.transform = "scale(1.05)";
-                counter.innerHTML = `<span class="inline-flex items-center">
-                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                    </svg>
-                    <span>${data}</span>&nbsp;views
-                </span>`;
-                
-                // Return to normal scale after animation
-                setTimeout(() => {
-                    counter.style.transform = "scale(1)";
-                }, 300);
-                
-                console.log("Counter updated with:", data);
-            }
-        } catch (error) {
-            console.error("Error updating view count:", error);
-        }
-    };
-    
-    // Call the view counter function
-    viewCounter();
+  };
+
+  updateCounter();
 });
