@@ -1,21 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
+<script>
+  import { onMount } from 'svelte';
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="description" content="Samuel Okorie, DevOps and Cloud Engineer specializing in reliable infrastructure, automation, CI/CD, Kubernetes, Terraform, and cloud operations.">
-    <meta name="author" content="Samuel Okorie">
-    <title>Samuel Okorie, DevOps and Cloud Engineer</title>
-    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Red+Hat+Display:wght@600;700;800;900&family=Red+Hat+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
+  const counterEndpoint = 'https://kjnbxinxccc3nk7bs6r4qqx7ta0vjwid.lambda-url.ca-central-1.on.aws/';
+  const visitorStorageKey = 'samuel-okorie-resume-visitor-id';
 
-<body id="page-top">
-    <a class="skip-link" href="#main">Skip to main content</a>
+  const createVisitorId = () => {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      return window.crypto.randomUUID();
+    }
+
+    if (window.crypto && typeof window.crypto.getRandomValues === 'function') {
+      const randomValues = new Uint32Array(4);
+      window.crypto.getRandomValues(randomValues);
+      return Array.from(randomValues, (value) => value.toString(16).padStart(8, '0')).join('-');
+    }
+
+    return `${Date.now().toString(16)}-${Math.random().toString(16).slice(2)}`;
+  };
+
+  const getVisitorId = () => {
+    try {
+      const existingId = window.localStorage.getItem(visitorStorageKey);
+      if (existingId) return existingId;
+
+      const visitorId = createVisitorId();
+      window.localStorage.setItem(visitorStorageKey, visitorId);
+      return visitorId;
+    } catch (error) {
+      console.warn('Visitor identity storage unavailable', error);
+      return createVisitorId();
+    }
+  };
+
+  onMount(() => {
+    const body = document.body;
+    const header = document.querySelector('[data-site-header]');
+    const toggle = document.querySelector('[data-nav-toggle]');
+    const panel = document.querySelector('[data-nav-panel]');
+    const navLinks = panel ? Array.from(panel.querySelectorAll('a')) : [];
+    /** @type {Array<() => void>} */
+    const cleanupCallbacks = [];
+
+    /**
+     * @param {EventTarget} target
+     * @param {string} eventName
+     * @param {EventListener} handler
+     */
+    const addListener = (target, eventName, handler) => {
+      target.addEventListener(eventName, handler);
+      cleanupCallbacks.push(() => target.removeEventListener(eventName, handler));
+    };
+
+    const closeMenu = () => {
+      if (!toggle || !panel) return;
+      toggle.setAttribute('aria-expanded', 'false');
+      panel.classList.remove('is-open');
+      body.classList.remove('nav-open');
+    };
+
+    const openMenu = () => {
+      if (!toggle || !panel) return;
+      toggle.setAttribute('aria-expanded', 'true');
+      panel.classList.add('is-open');
+      body.classList.add('nav-open');
+    };
+
+    if (toggle && panel) {
+      addListener(toggle, 'click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      navLinks.forEach((link) => {
+        addListener(link, 'click', closeMenu);
+      });
+
+      addListener(document, 'keydown', (event) => {
+        if (event instanceof KeyboardEvent && event.key === 'Escape') closeMenu();
+      });
+
+      addListener(document, 'click', (event) => {
+        if (!body.classList.contains('nav-open')) return;
+        if (header && event.target instanceof Node && header.contains(event.target)) return;
+        closeMenu();
+      });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      addListener(anchor, 'click', (event) => {
+        const targetId = anchor.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const targetElement = document.querySelector(targetId);
+        if (!targetElement) return;
+        event.preventDefault();
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        targetElement.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+        if (targetElement instanceof HTMLElement) {
+          targetElement.setAttribute('tabindex', '-1');
+          targetElement.focus({ preventScroll: true });
+        }
+      });
+    });
+
+    const counter = document.querySelector('[data-counter]');
+    const updateCounter = async () => {
+      if (!counter) return;
+      try {
+        const url = new URL(counterEndpoint);
+        url.searchParams.set('visitorId', getVisitorId());
+        url.searchParams.set('path', window.location.pathname);
+
+        const response = await fetch(url, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`Counter request failed: ${response.status}`);
+        const data = await response.json();
+        const visits = data.total_pageviews ?? data.views;
+        const uniqueVisitors = data.unique_visitors;
+        counter.textContent = uniqueVisitors
+          ? `${visits} visits · ${uniqueVisitors} unique visitors`
+          : `${visits} visits recorded`;
+      } catch (error) {
+        console.warn('Visitor counter unavailable', error);
+        counter.textContent = 'Visitor count unavailable';
+      }
+    };
+
+    updateCounter();
+
+    return () => {
+      cleanupCallbacks.forEach((callback) => callback());
+      body.classList.remove('nav-open');
+    };
+  });
+</script>
+
+<svelte:head>
+  <title>Samuel Okorie | DevOps & Cloud Engineer</title>
+  <meta
+    name="description"
+    content="DevOps and Cloud Engineer focused on CI/CD automation, Kubernetes platforms, infrastructure as code, monitoring, and secure cloud operations."
+  />
+</svelte:head>
+
+<a class="skip-link" href="#main">Skip to main content</a>
 
     <header class="site-header" data-site-header>
         <nav class="site-nav" aria-label="Primary navigation">
@@ -48,17 +174,17 @@
     <main id="main" class="site-main">
         <section class="hero section-shell" aria-labelledby="hero-title">
             <div class="hero__content">
-                <h1 id="hero-title">Samuel Okorie builds resilient cloud infrastructure.</h1>
-                <p class="hero__lede">DevOps and Cloud Engineer focused on CI/CD automation, Kubernetes platforms, infrastructure as code, monitoring, and secure cloud operations.</p>
+                <h1 id="hero-title">I help teams ship safer: cleaner pipelines, observable systems, recoverable infrastrcuture.</h1>
+                <p class="hero__lede">DevOps and Cloud Engineer focused on CI/CD, Kubernetes, Infrastructure as Code, and secure cloud operations.</p>
                 <div class="hero__actions" role="group" aria-label="Primary contact actions">
                     <a class="button button--primary" href="mailto:thesamokorie@gmail.com">Email Samuel</a>
                     <a class="button button--primary" href="https://linkedin.com/in/sokorie/" target="_blank" rel="noreferrer">Connect on LinkedIn</a>
-                    <a class="button button--secondary" href="./assets/Samuel_Okorie.pdf" target="_blank" rel="noreferrer">View resume</a>
+                    <a class="button button--secondary" href="/assets/Samuel_Okorie.pdf" target="_blank" rel="noreferrer">View resume</a>
                 </div>
             </div>
 
             <div class="hero-card" role="group" aria-label="Professional snapshot">
-                <img class="hero-card__portrait" src="./assets/img/profile.jpg" alt="Portrait of Samuel Okorie" width="320" height="320">
+                <img class="hero-card__portrait" src="/assets/img/profile.jpg" alt="Portrait of Samuel Okorie" width="320" height="320">
                 <div class="hero-card__body">
                     <p class="terminal-label">current focus</p>
                     <ul class="status-list">
@@ -310,14 +436,14 @@
 
         <section id="contact" class="contact-section" aria-labelledby="contact-title">
             <div>
-                <h2 id="contact-title">Ready for a recruiter screen or technical conversation.</h2>
+                <h2 id="contact-title">Let's connect.</h2>
                 <p>Email and LinkedIn are equal-priority paths. The resume is available for deeper review.</p>
             </div>
             <div class="contact-actions" role="group" aria-label="Contact Samuel">
                 <a class="button button--primary" href="mailto:thesamokorie@gmail.com">thesamokorie@gmail.com</a>
                 <a class="button button--primary" href="https://linkedin.com/in/sokorie/" target="_blank" rel="noreferrer">LinkedIn profile</a>
                 <a class="button button--secondary" href="https://github.com/sojay" target="_blank" rel="noreferrer">GitHub</a>
-                <a class="button button--secondary" href="./assets/Samuel_Okorie.pdf" target="_blank" rel="noreferrer">Resume PDF</a>
+                <a class="button button--secondary" href="/assets/Samuel_Okorie.pdf" target="_blank" rel="noreferrer">Resume PDF</a>
             </div>
         </section>
     </main>
@@ -326,8 +452,3 @@
         <p>© 2026 Samuel Okorie. Reliable cloud systems, automation, and operations.</p>
         <p class="counter-number" aria-live="polite" data-counter>Visitor count unavailable</p>
     </footer>
-
-    <script src="./js/scripts.js" defer></script>
-</body>
-
-</html>
