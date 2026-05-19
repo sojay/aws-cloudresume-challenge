@@ -102,6 +102,60 @@
       });
     });
 
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const showWelcomeToast = (/** @type {number} */ visitorNumber) => {
+      const toast = document.createElement('div');
+      toast.className = 'welcome-toast';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toast);
+
+      const lines = [
+        { prompt: '$', text: ' ./hello.sh --new-visitor' },
+        { prompt: '>', text: ' 👾 first boot detected' },
+        { prompt: '>', text: ` you're visitor #${visitorNumber} · welcome 🟢` },
+      ];
+
+      const addLine = (/** @type {string} */ prompt, /** @type {string} */ text, /** @type {number} */ startDelay) => {
+        setTimeout(() => {
+          const line = document.createElement('p');
+          line.className = 'welcome-toast__line';
+
+          const promptEl = document.createElement('span');
+          promptEl.className = 'welcome-toast__prompt';
+          promptEl.textContent = prompt;
+
+          const textEl = document.createElement('span');
+          line.append(promptEl, textEl);
+          toast.appendChild(line);
+
+          if (reducedMotion) {
+            textEl.textContent = text;
+            return;
+          }
+
+          let i = 0;
+          const type = () => {
+            if (i < text.length) {
+              textEl.textContent += text[i++];
+              setTimeout(type, 28);
+            }
+          };
+          type();
+        }, startDelay);
+      };
+
+      const delays = reducedMotion ? [0, 0, 0] : [0, 650, 1350];
+      lines.forEach(({ prompt, text }, i) => addLine(prompt, text, delays[i]));
+
+      const dismissDelay = reducedMotion ? 3000 : 5500;
+      setTimeout(() => {
+        toast.classList.add('is-exiting');
+        setTimeout(() => toast.remove(), 350);
+      }, dismissDelay);
+    };
+
     const counter = document.querySelector('[data-counter]');
     const updateCounter = async () => {
       if (!counter) return;
@@ -113,14 +167,11 @@
         const response = await fetch(url, { cache: 'no-store' });
         if (!response.ok) throw new Error(`Counter request failed: ${response.status}`);
         const data = await response.json();
-        const visits = data.total_pageviews ?? data.views;
-        const uniqueVisitors = data.unique_visitors;
-        counter.textContent = uniqueVisitors
-          ? `${visits} visits · ${uniqueVisitors} unique visitors`
-          : `${visits} visits recorded`;
+        const unique = data.unique_visitors;
+        counter.textContent = unique ? `${unique} visitors` : '';
+        if (data.new_visitor) showWelcomeToast(unique);
       } catch (error) {
         console.warn('Visitor counter unavailable', error);
-        counter.textContent = 'Visitor count unavailable';
       }
     };
 
@@ -437,7 +488,7 @@
         <section id="contact" class="contact-section" aria-labelledby="contact-title">
             <div>
                 <h2 id="contact-title">Let's connect.</h2>
-                <p>Email and LinkedIn are equal-priority paths. The resume is available for deeper review.</p>
+                <!-- <p>Email and LinkedIn are equal-priority paths. The resume is available for deeper review.</p> -->
             </div>
             <div class="contact-actions" role="group" aria-label="Contact Samuel">
                 <a class="button button--primary" href="mailto:thesamokorie@gmail.com">thesamokorie@gmail.com</a>
@@ -450,5 +501,5 @@
 
     <footer class="site-footer">
         <p>© 2026 Samuel Okorie. Reliable cloud systems, automation, and operations.</p>
-        <p class="counter-number" aria-live="polite" data-counter>Visitor count unavailable</p>
+        <p class="counter-number" aria-live="polite" data-counter></p>
     </footer>

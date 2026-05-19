@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-15T12:23:00-04:00",
+  "title": "Design System: Samuel Okorie Resume Site",
+  "extensions": {
+    "colorMeta": {
+      "terminal": {
+        "role": "primary",
+        "displayName": "Terminal Signal",
+        "canonical": "#00D492",
+        "tonalRamp": ["oklch(15% 0.06 165)", "oklch(25% 0.08 165)", "oklch(35% 0.10 165)", "oklch(45% 0.12 165)", "oklch(55% 0.14 165)", "oklch(65% 0.16 165)", "oklch(78% 0.12 165)", "oklch(92% 0.05 165)"]
+      },
+      "command-blue": {
+        "role": "primary-action",
+        "displayName": "Command Blue",
+        "canonical": "#3B82F6",
+        "tonalRamp": ["oklch(18% 0.06 260)", "oklch(28% 0.09 260)", "oklch(38% 0.12 260)", "oklch(48% 0.15 260)", "oklch(58% 0.17 260)", "oklch(68% 0.14 260)", "oklch(80% 0.09 260)", "oklch(94% 0.03 260)"]
+      },
+      "ink-bg": {
+        "role": "neutral",
+        "displayName": "Ink Background",
+        "canonical": "#080A0F",
+        "tonalRamp": ["oklch(8% 0.01 260)", "oklch(14% 0.012 260)", "oklch(22% 0.014 260)", "oklch(34% 0.012 260)", "oklch(48% 0.01 260)", "oklch(64% 0.008 260)", "oklch(80% 0.006 260)", "oklch(94% 0.004 260)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero identity and major statements." },
+      "headline": { "displayName": "Terminal Headline", "purpose": "Section headings and terminal prompts." },
+      "body": { "displayName": "Body", "purpose": "Readable resume and project copy." },
+      "label": { "displayName": "Mono Label", "purpose": "Navigation, dates, metadata, chips, and code-adjacent text." }
+    },
+    "shadows": [
+      { "name": "card-hover-glow", "value": "0 0 0 1px rgba(0, 212, 146, 0.1), 0 4px 24px rgba(0, 0, 0, 0.4)", "purpose": "Subtle hover confirmation for interactive cards." },
+      { "name": "nav-rail", "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)", "purpose": "Structural separation for fixed navigation." }
+    ],
+    "motion": [
+      { "name": "state-transition", "value": "200ms cubic-bezier(0.25, 1, 0.5, 1)", "purpose": "Default transition for hover and focus state changes." },
+      { "name": "reduced-motion", "value": "respect prefers-reduced-motion", "purpose": "Disable nonessential movement for motion-sensitive users." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary resume or project action with a composed technical feel.",
+      "html": "<button class=\"ds-btn-primary\">Download Resume</button>",
+      "css": ".ds-btn-primary { background: #3B82F6; color: #F8F9FA; border: 1px solid rgba(248,249,250,0.08); border-radius: 6px; padding: 12px 24px; font-family: Manrope, sans-serif; font-weight: 600; transition: background 200ms cubic-bezier(0.25,1,0.5,1), border-color 200ms cubic-bezier(0.25,1,0.5,1); } .ds-btn-primary:hover { background: #2563EB; } .ds-btn-primary:focus-visible { outline: 2px solid #00D492; outline-offset: 3px; }"
+    },
+    {
+      "name": "Terminal Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Desktop or mobile navigation item with terminal-native text treatment.",
+      "html": "<a class=\"ds-nav-link\" href=\"#about\"><span aria-hidden=\"true\">&gt;</span> About</a>",
+      "css": ".ds-nav-link { display: inline-flex; gap: 8px; align-items: center; color: #D1D5DB; padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; text-decoration: none; transition: color 200ms cubic-bezier(0.25,1,0.5,1); } .ds-nav-link span { color: #00D492; opacity: 0; transition: opacity 200ms cubic-bezier(0.25,1,0.5,1); } .ds-nav-link:hover { color: #00D492; } .ds-nav-link:hover span, .ds-nav-link:focus-visible span { opacity: 1; } .ds-nav-link:focus-visible { outline: 2px solid #00D492; outline-offset: 3px; }"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Flat dark surface for resume sections and project evidence.",
+      "html": "<article class=\"ds-card\"><h3>DevOps Engineer</h3><p>Reliable cloud automation, CI/CD, and Kubernetes infrastructure.</p></article>",
+      "css": ".ds-card { background: #111827; color: #D1D5DB; border: 1px solid rgba(55,65,81,0.6); border-radius: 2px; padding: 24px; font-family: Manrope, sans-serif; transition: border-color 200ms cubic-bezier(0.25,1,0.5,1), box-shadow 200ms cubic-bezier(0.25,1,0.5,1); } .ds-card h3 { color: #F8F9FA; font-size: 24px; line-height: 1.25; margin: 0 0 8px; } .ds-card p { margin: 0; line-height: 1.65; } .ds-card:hover { border-color: rgba(0,212,146,0.25); box-shadow: 0 0 0 1px rgba(0,212,146,0.1), 0 4px 24px rgba(0,0,0,0.4); }"
+    },
+    {
+      "name": "Tech Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Compact technology metadata for project cards.",
+      "html": "<span class=\"ds-chip\">Terraform</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; border-radius: 9999px; background: #0F172A; color: #D1D5DB; border: 1px solid rgba(55,65,81,0.75); padding: 4px 12px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 500; }"
+    },
+    {
+      "name": "Terminal Section Heading",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Section heading with a quiet prompt marker.",
+      "html": "<h2 class=\"ds-section-heading\"><span aria-hidden=\"true\">&gt;</span> Experience</h2>",
+      "css": ".ds-section-heading { display: flex; align-items: baseline; gap: 16px; color: #F8F9FA; border-bottom: 2px solid #1F2937; padding-bottom: 8px; margin: 0 0 32px; font-family: 'JetBrains Mono', monospace; font-size: clamp(24px,3vw,30px); line-height: 1.2; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; } .ds-section-heading span { color: #00D492; letter-spacing: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Reliable Shell",
+    "overview": "This system should feel like a calm production terminal operated by someone senior enough not to show off. The atmosphere is dark, focused, and technical, but it must never become theatrical. The page should communicate infrastructure discipline: clear hierarchy, restrained accent color, readable content, and proof-first storytelling.",
+    "keyCharacteristics": [
+      "Dark, quiet, terminal-native atmosphere.",
+      "Green accent used as a precision signal, not decoration.",
+      "Strong scan paths for hiring managers.",
+      "Technical credibility carried by evidence and project detail.",
+      "Accessible, stable, reduced-motion friendly behavior."
+    ],
+    "rules": [
+      { "name": "The One Cursor Rule", "body": "Terminal Signal is the cursor, not the wallpaper. If more than one element per cluster is glowing green, the interface is becoming costume.", "section": "colors" },
+      { "name": "The Blue Is Utility Rule", "body": "Blue marks action and links. It should not become a second brand personality.", "section": "colors" },
+      { "name": "The Mono Has a Job Rule", "body": "Mono is for navigation, prompts, dates, metadata, and code. Do not use it as a lazy shorthand for everything technical.", "section": "typography" },
+      { "name": "The Recruiter Scan Rule", "body": "Headings and first lines must carry meaning without requiring the paragraph below.", "section": "typography" },
+      { "name": "The Stable Surface Rule", "body": "Surfaces should not appear fragile or glassy. Borders and tonal contrast do most of the work.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do make the first screen explain Samuel's role, seniority, and value for hiring managers.",
+      "Do use Terminal Signal sparingly for prompts, focus, and active state confirmation.",
+      "Do keep body copy readable with generous line height and 65 to 75ch maximum line length.",
+      "Do preserve keyboard navigation, screen-reader landmarks, semantic headings, and WCAG AA contrast.",
+      "Do make project cards evidence-rich, with outcomes and architecture details that support technical credibility."
+    ],
+    "donts": [
+      "Don't use a flashy hacker aesthetic.",
+      "Don't add neon overload, cyberpunk theatrics, matrix-style effects, exaggerated glitch treatments, or noisy terminal gimmicks.",
+      "Don't use generic AI portfolio patterns, startup SaaS landing-page clichés, decorative gradient excess, or corporate resume-template blandness.",
+      "Don't nest cards inside cards when spacing, dividers, or section rhythm can separate content.",
+      "Don't make every surface glow green. If the page looks like a hacker movie prop, it failed the brand."
+    ]
+  }
+}
