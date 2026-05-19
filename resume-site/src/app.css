@@ -356,9 +356,9 @@ a {
 }
 
 .hero h1 {
-  max-width: 12.6ch;
+  max-width: 20ch;
   margin-top: var(--space-4);
-  font-size: var(--type-hero);
+  font-size: var(--type-section);
 }
 
 .hero__lede {
