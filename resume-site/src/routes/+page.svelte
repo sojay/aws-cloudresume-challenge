@@ -320,7 +320,7 @@
         <section id="projects" class="page-section" aria-labelledby="projects-title">
             <div class="section-heading section-heading--split">
                 <div>
-                    <h2 id="projects-title">Technical proof beyond the resume.</h2>
+                    <h2 id="projects-title">Projects and contributions.</h2>
                 </div>
                 <p>Compact case studies that show infrastructure judgment, automation fluency, and product-minded engineering.</p>
             </div>
@@ -372,21 +372,22 @@
 
                 <article class="project-card">
                     <div class="project-card__topline">
-                        <h3>Homelab Environment</h3>
+                        <h3>tuppr</h3>
+                        <a href="https://github.com/home-operations/tuppr/pull/197" target="_blank" rel="noreferrer">home-operations/tuppr #197</a>
                     </div>
-                    <p>A personal infrastructure environment for hands-on practice with virtualization, containerization, IAM, networking, and self-hosted systems.</p>
+                    <p>Operators running tuppr now get notified the moment a Talos upgrade fires, with current and target versions in the message, so they're not watching kubectl waiting to see if the job ran. Contributed the Shoutrrr notification package, reconciler injection, and tests.</p>
                     <dl class="project-facts">
                         <div>
-                            <dt>Built</dt>
-                            <dd>Two-node PVE cluster, reverse proxy access, traffic analysis, monitoring, and CI/CD for personal development projects.</dd>
+                            <dt>Contribution</dt>
+                            <dd>Added internal/notification package, injected notifier into the Talos reconciler, wired NOTIFICATION_URL from controller runtime env and Helm secret-backed values.</dd>
                         </div>
                         <div>
                             <dt>Stack</dt>
-                            <dd>Proxmox VE, Kubernetes, Docker, Nginx, DHCP/DNS, NAS.</dd>
+                            <dd>Go, Kubernetes controllers, Shoutrrr, Helm.</dd>
                         </div>
                         <div>
-                            <dt>Signal</dt>
-                            <dd>Shows curiosity, systems practice, and reliable infrastructure learning outside formal work.</dd>
+                            <dt>Merged</dt>
+                            <dd>April 2026 · 356 additions across 13 files · 243 GitHub stars.</dd>
                         </div>
                     </dl>
                 </article>
